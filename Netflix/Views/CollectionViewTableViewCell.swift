@@ -8,14 +8,14 @@
 import UIKit
 
 class CollectionViewTableViewCell: UITableViewCell {
-
+    // We are defining Collection view for table view custom cell.
     static let identifier = "CollectionViewTableViewCell"
     
     private let collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 140, height: 200)
+        layout.itemSize = CGSize(width: 140, height: 200) // İtem sizes for each box.
         layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout) // Will define frame later.
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return collectionView
     }()
