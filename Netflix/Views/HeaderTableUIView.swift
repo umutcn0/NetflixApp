@@ -16,7 +16,7 @@ class HeaderTableUIView: UIView {
         button.setTitle("Download", for: .normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
-        button.layer.cornerRadius = 15
+        button.layer.cornerRadius = 5
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -27,7 +27,7 @@ class HeaderTableUIView: UIView {
         button.setTitle("Play", for: .normal)
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.borderWidth = 1
-        button.layer.cornerRadius = 15
+        button.layer.cornerRadius = 5
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
