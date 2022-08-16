@@ -24,6 +24,8 @@
 		76CF58BD28AA53220012DB3F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 76CF58BC28AA53220012DB3F /* SDWebImage */; };
 		76CF58BF28AA53220012DB3F /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 76CF58BE28AA53220012DB3F /* SDWebImageMapKit */; };
 		76D2F18128A6675D00091025 /* HeaderTableUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D2F18028A6675D00091025 /* HeaderTableUIView.swift */; };
+		76D56A4528ABB6C400CB1DC6 /* TitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D56A4428ABB6C400CB1DC6 /* TitleViewModel.swift */; };
+		76D56A4728ABBAD100CB1DC6 /* ComingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D56A4628ABBAD100CB1DC6 /* ComingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		76A3B5ED28A53BF900351F88 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
 		76CF58B928AA51820012DB3F /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		76D2F18028A6675D00091025 /* HeaderTableUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableUIView.swift; sourceTree = "<group>"; };
+		76D56A4428ABB6C400CB1DC6 /* TitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewModel.swift; sourceTree = "<group>"; };
+		76D56A4628ABBAD100CB1DC6 /* ComingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 				76A3B5ED28A53BF900351F88 /* CollectionViewTableViewCell.swift */,
 				76D2F18028A6675D00091025 /* HeaderTableUIView.swift */,
 				76CF58B928AA51820012DB3F /* TitleCollectionViewCell.swift */,
+				76D56A4628ABBAD100CB1DC6 /* ComingTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 		76A3B5E928A53B7E00351F88 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				76D56A4428ABB6C400CB1DC6 /* TitleViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -226,12 +232,14 @@
 				76A3B5E528A516BB00351F88 /* SearchViewController.swift in Sources */,
 				76CF58BA28AA51820012DB3F /* TitleCollectionViewCell.swift in Sources */,
 				7691495228A971CA00004F38 /* Movies.swift in Sources */,
+				76D56A4728ABBAD100CB1DC6 /* ComingTableViewCell.swift in Sources */,
 				76A3B5E328A516B000351F88 /* ComingViewController.swift in Sources */,
 				76A3B5E728A516C700351F88 /* DownloadsViewController.swift in Sources */,
 				7691495028A95BF400004F38 /* APICaller.swift in Sources */,
 				76A3B5D028A5155C00351F88 /* MainTabBarViewController.swift in Sources */,
 				76A3B5CC28A5155C00351F88 /* AppDelegate.swift in Sources */,
 				7691495428A97B9900004F38 /* Extensions.swift in Sources */,
+				76D56A4528ABB6C400CB1DC6 /* TitleViewModel.swift in Sources */,
 				76D2F18128A6675D00091025 /* HeaderTableUIView.swift in Sources */,
 				76A3B5CE28A5155C00351F88 /* SceneDelegate.swift in Sources */,
 				76A3B5EE28A53BF900351F88 /* CollectionViewTableViewCell.swift in Sources */,
