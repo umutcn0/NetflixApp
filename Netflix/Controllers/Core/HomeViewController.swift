@@ -39,6 +39,10 @@ class HomeViewController: UIViewController {
         homeFeedTable.dataSource = self
         let headerView = HeaderTableUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         homeFeedTable.tableHeaderView = headerView
+        
+        APICaller.shared.getMovie(with: "Harry Potter") { result in
+            //
+        }
     }
     
     override func viewDidLayoutSubviews() {
