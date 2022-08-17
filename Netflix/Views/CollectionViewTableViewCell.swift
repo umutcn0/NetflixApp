@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol CollectionViewTableViewCellDelegate : AnyObject {
+    func CollectionViewTableViewCellDidTapCell(_ cell: CollectionViewTableViewCell, viewModel: TitlePreviewViewModel)
+}
+
 class CollectionViewTableViewCell: UITableViewCell {
     // We are defining Collection view for table view custom cell.
     static let identifier = "CollectionViewTableViewCell"
     
     private var title : [Title] = [Title]()
+    weak var delegate : CollectionViewTableViewCellDelegate?
     
     private let collectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -73,7 +78,13 @@ extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionVie
         APICaller.shared.getMovie(with: titleName + "trailer") { result in
             switch result {
             case .success(let VideoElement):
-                print(VideoElement.id)
+                
+                let model_title = self.title[indexPath.row]
+                guard let titleOverview = model_title.overview else {return}
+                
+                let viewModel = TitlePreviewViewModel(title: titleName, titleOverview: titleOverview, youtubeVideo: VideoElement)
+                self.delegate?.CollectionViewTableViewCellDidTapCell(self, viewModel: viewModel)
+            
             case .failure(let error):
                 print(error.localizedDescription)
             }
