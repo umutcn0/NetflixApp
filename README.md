@@ -17,7 +17,7 @@ The following tools were used in this project:
 Before start, you need to install Git, Swift and Xcode.
 ```swift
 # Clone this project
-$ git clone https://github.com/....
+$ git clone https://github.com/umutcn0/NetflixApp.git
 ```
 Enter the relevant API keys to run the project.
 
