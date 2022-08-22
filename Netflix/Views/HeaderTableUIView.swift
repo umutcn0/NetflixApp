@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol HeaderTableUIViewDelegate: AnyObject{
+    func downloadButtonDidTaped()
+    func playButtonDidTapped()
+}
+
 class HeaderTableUIView: UIView {
+    
+    weak var delegate: HeaderTableUIViewDelegate?
     
     //Button defining
     private let downloadButton : UIButton = {
@@ -92,6 +99,20 @@ class HeaderTableUIView: UIView {
     public func configure(_ model : TitleViewModel){
         guard let url = URL(string: "https://image.tmdb.org/t/p/w500\(model.posterURL)") else {return}
         headerTableImage.sd_setImage(with: url)
+    }
+    
+    public func configureButtons() {
+        downloadButton.addTarget(self, action: #selector(didTapDownload), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(didTapPlay), for: .touchUpInside)
+
+    }
+    
+    @objc private func didTapDownload() {
+        delegate?.downloadButtonDidTaped()
+    }
+    
+    @objc private func didTapPlay() {
+        delegate?.playButtonDidTapped()
     }
 
 }

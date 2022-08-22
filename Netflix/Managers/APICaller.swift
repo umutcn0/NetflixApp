@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     static let API_KEY = "21b6661f87543d110955bd363e382726"
@@ -178,4 +179,5 @@ class APICaller {
             }
             task.resume()
         }
+    
 }

@@ -42,6 +42,7 @@ class HomeViewController: UIViewController {
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
         headerView = HeaderTableUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
+        headerView?.delegate = self
         homeFeedTable.tableHeaderView = headerView
         
     }
@@ -69,8 +70,9 @@ class HomeViewController: UIViewController {
             switch result{
             case .success(let titles):
                 let selectedTitle = titles.randomElement()
-                
                 self?.randomTrendingMovie = selectedTitle
+
+                self?.headerView?.configureButtons()
                 self?.headerView?.configure(TitleViewModel(posterURL: self?.randomTrendingMovie?.poster_path ?? "", titleName: self?.randomTrendingMovie?.original_title ?? ""))
             case .failure(let error):
                 print(error.localizedDescription)
@@ -78,7 +80,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
@@ -175,6 +176,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
+    
+    func makeAlert(titleInput: String, messageInput:String){
+        let alert = UIAlertController(title: titleInput, message: messageInput, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension UIImage {
@@ -201,3 +209,40 @@ extension HomeViewController: CollectionViewTableViewCellDelegate{
     
     
 }
+
+extension HomeViewController: HeaderTableUIViewDelegate {
+    
+    func downloadButtonDidTaped() {
+        
+        guard let model = randomTrendingMovie else {return}
+        DataPersistenceManager.shared.downloadTitleWith(model: model) { result in
+            switch result {
+            case .success():
+                NotificationCenter.default.post(name: NSNotification.Name("newItem"), object: nil)
+                self.makeAlert(titleInput: "Movie Downloaded", messageInput: "Movie Downloaded")
+            case .failure(let error):
+                self.makeAlert(titleInput: "Error", messageInput: error.localizedDescription)
+            }
+        }
+        
+        
+    }
+
+    func playButtonDidTapped() {
+        let randomTrendingMovieTitle = randomTrendingMovie?.original_title ?? randomTrendingMovie?.original_name ?? ""
+        APICaller.shared.getMovie(with: randomTrendingMovieTitle + "trailer") { result in
+            switch result {
+            case .success(let VideoElement):
+                
+                DispatchQueue.main.async { [weak self] in
+                    let vc = TitlePreviewViewController()
+                    vc.configure(with: TitlePreviewViewModel(title: randomTrendingMovieTitle, titleOverview: self?.randomTrendingMovie?.overview ?? "", youtubeVideo: VideoElement))
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
