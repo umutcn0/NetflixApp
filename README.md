@@ -37,4 +37,4 @@ struct Constants{
 ------------
 
 # Authors
-### Umut Can - [Linkedin](https://www.linkedin.com/in/umut-can-0a7417157/)
+### Umut Can - [Linkedin](https://www.linkedin.com/in/umutcn/)
