@@ -121,8 +121,6 @@
 				76A3B5E828A53B7600351F88 /* Views */,
 				76A3B5E928A53B7E00351F88 /* ViewModels */,
 				76A3B5DF28A5168F00351F88 /* Controllers */,
-				76A3B5CB28A5155C00351F88 /* AppDelegate.swift */,
-				76A3B5CD28A5155C00351F88 /* SceneDelegate.swift */,
 				76A3B5D428A5155E00351F88 /* Assets.xcassets */,
 				76A3B5D628A5155E00351F88 /* LaunchScreen.storyboard */,
 				76A3B5D928A5155E00351F88 /* Info.plist */,
@@ -172,6 +170,8 @@
 		76A3B5EB28A53BD200351F88 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				76A3B5CB28A5155C00351F88 /* AppDelegate.swift */,
+				76A3B5CD28A5155C00351F88 /* SceneDelegate.swift */,
 				7691495328A97B9900004F38 /* Extensions.swift */,
 			);
 			path = Resources;
