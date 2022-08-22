@@ -21,6 +21,9 @@ class HomeViewController: UIViewController {
     
     let tableViewHeaders : [String] = ["TRENDING MOVIES", "TRENDING TV", "POPULAR", "UPCOMING MOVIES", "TOP RATED"]
     
+    private var headerView : HeaderTableUIView?
+    private var randomTrendingMovie : Title?
+    
     private let homeFeedTable : UITableView = {
         
         let table = UITableView(frame: .zero, style: .grouped)
@@ -34,10 +37,11 @@ class HomeViewController: UIViewController {
         view.addSubview(homeFeedTable)
         
         configureNavigationBar()
+        configureHeaderView()
         
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
-        let headerView = HeaderTableUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
+        headerView = HeaderTableUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         homeFeedTable.tableHeaderView = headerView
         
     }
@@ -58,6 +62,20 @@ class HomeViewController: UIViewController {
         ]
         
         navigationController?.navigationBar.tintColor = .white
+    }
+    
+    private func configureHeaderView(){
+        APICaller.shared.getTrendingMovies { [weak self]result in
+            switch result{
+            case .success(let titles):
+                let selectedTitle = titles.randomElement()
+                
+                self?.randomTrendingMovie = selectedTitle
+                self?.headerView?.configure(TitleViewModel(posterURL: self?.randomTrendingMovie?.poster_path ?? "", titleName: self?.randomTrendingMovie?.original_title ?? ""))
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
 

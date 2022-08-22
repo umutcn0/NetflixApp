@@ -16,11 +16,16 @@ class TitlePreviewViewController: UIViewController {
         return webView
     }()
     
+    private let dummyLabel: UILabel = {
+        let dummy = UILabel()
+        dummy.translatesAutoresizingMaskIntoConstraints = false
+        return dummy
+    }()
+    
     private let titleLabel : UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = .systemFont(ofSize: 20, weight: .bold)
-        title.text = "TEST"
         return title
     }()
     
@@ -29,7 +34,6 @@ class TitlePreviewViewController: UIViewController {
         overview.translatesAutoresizingMaskIntoConstraints = false
         overview.font = .systemFont(ofSize: 15, weight: .regular)
         overview.numberOfLines = 0
-        overview.text = "Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir."
         return overview
     }()
     
@@ -52,6 +56,7 @@ class TitlePreviewViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(overviewLabel)
         view.addSubview(downloadButton)
+        view.addSubview(dummyLabel)
         
         configureConstraits()
     }
@@ -67,6 +72,7 @@ class TitlePreviewViewController: UIViewController {
         let titleLabelConstraints = [
             titleLabel.topAnchor.constraint(equalTo: webView.bottomAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
         
         let overviewLabelConstraints = [
@@ -79,8 +85,11 @@ class TitlePreviewViewController: UIViewController {
             downloadButton.topAnchor.constraint(equalTo: overviewLabel.bottomAnchor, constant: 20),
             downloadButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             downloadButton.widthAnchor.constraint(equalToConstant: 150),
-            downloadButton.heightAnchor.constraint(equalToConstant: 50)
+            downloadButton.heightAnchor.constraint(equalToConstant: 50),
+            downloadButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ]
+        
+
         
         NSLayoutConstraint.activate(webViewConstraints)
         NSLayoutConstraint.activate(titleLabelConstraints)
