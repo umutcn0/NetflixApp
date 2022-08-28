@@ -40,4 +40,3 @@ struct Constants{
 <img src="https://i.im.ge/2022/08/28/ON09zJ.00-E1296-A-3-D5-A-4-ACA-8-C18-7-D3-F216-F7-BE4.png" width="200"/> <img src="https://i.im.ge/2022/08/28/ON0mOy.31-FFF3-B1-FECC-4714-AFF5-3-C3786-EC47-AF.png" width="200"/> 
 # Authors
 ### Umut Can - [Linkedin](https://www.linkedin.com/in/umutcn/)
-
